@@ -7,6 +7,8 @@
 
 ### Please refer to the README.md for instructions on how
 ### to utilize this script
+### NOTE: This script can take upto 20 seconds to run.
+### DEPENDENCIES: This script requires the dplyr package to run
 
 ## SETUP ##
 ##################################################################################
@@ -29,8 +31,8 @@ activityurl <- "activity_labels.txt"
 ## STEP1: Merges the training and the test sets to create one data set. ##
 ##########################################################################
 
-x_test_data <- read.table(paste(Main_URL, x_testurl, sep = "/"))
-x_train_data <- read.table(paste(Main_URL, x_trainurl, sep = "/"))
+x_test_data <- read.table(paste(Main_URL, x_testurl, sep = "/"), colClasses = "numeric")
+x_train_data <- read.table(paste(Main_URL, x_trainurl, sep = "/"), colClasses = "numeric")
 
 merged_data <- rbind(x_train_data, x_test_data)
 
@@ -48,8 +50,8 @@ merged_data <- merged_data[, acceptedvars]
 
 ## load the subjects data, merge the test and train sets and add to the merged data set
 
-sub_test_data <- read.table(paste(Main_URL, subtesturl, sep = "/"))
-sub_train_data <- read.table(paste(Main_URL, subtrainurl, sep = "/"))
+sub_test_data <- read.table(paste(Main_URL, subtesturl, sep = "/"), colClasses = "integer")
+sub_train_data <- read.table(paste(Main_URL, subtrainurl, sep = "/"), colClasses = "integer")
 
 sub_data <- rbind(sub_train_data, sub_test_data)
 
@@ -60,8 +62,8 @@ merged_data$subject <- sub_data$V1
 ## load the test and train data for activity, merge them and load the activity labels  ##
 #########################################################################################
 
-y_test_data <- read.table(paste(Main_URL, y_testurl, sep = "/"))
-y_train_data <- read.table(paste(Main_URL, y_trainurl, sep = "/"))
+y_test_data <- read.table(paste(Main_URL, y_testurl, sep = "/"), colClasses = "integer")
+y_train_data <- read.table(paste(Main_URL, y_trainurl, sep = "/"), colClasses = "integer")
 
 activitylabel <- read.table(paste(Main_URL, activityurl, sep = "/"))
 activities <- rbind(y_train_data, y_test_data)
