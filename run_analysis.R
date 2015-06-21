@@ -80,10 +80,11 @@ merged_data$activity <- num_to_label_activity(activities$V1)
 ## STEP 4: Appropriately labels the data set with descriptive variable names.          ##
 ## Selects appropriate feature names and assigns them to names(merged_data)            ##
 ## Variable names are made syntactical by replacing '-' with '.' and removing '()'     ##
+## Also removed duplicate Body from BodyBody                                           ##
 #########################################################################################
 
 names(merged_data) <- c(as.character(features[[2]][acceptedvars]), "subject", "activity")
-names(merged_data) <- gsub("\\(\\)", "", gsub("-", ".", names(merged_data)))
+names(merged_data) <- gsub("BodyBody", "Body", gsub("\\(\\)", "", gsub("-", ".", names(merged_data))))
 
 library(dplyr)
 

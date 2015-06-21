@@ -102,20 +102,20 @@ The tidy data, produced in wide form has 180 rows and 68 columns. The data shows
 - **fBodyAccMag.std**:
   - Shows the grouped average of the standard deviation of the frequency-domain magnitude of body acceleration.
   
-- **fBodyBodyAccJerkMag.mean**:
+- **fBodyAccJerkMag.mean**:
   - Shows the grouped average of the mean of the frequency-domain magnitude of jerk of body acceleration.
   
-- **fBodyBodyAccJerkMag.std**:
+- **fBodyAccJerkMag.std**:
   - Shows the grouped average of the standard deviation of the frequency-domain magnitude of jerk of body acceleration.
 
-- **fBodyBodyGyroMag.mean**:
+- **fBodyGyroMag.mean**:
   - Shows the grouped average of the mean of the frequency-domain magnitude of body gyro.
 
-- **fBodyBodyGyroMag.std**:
+- **fBodyGyroMag.std**:
   - Shows the grouped average of the standard deviation of the frequency-domain magnitude of body gyro.
 
-- **fBodyBodyGyroJerkMag.mean**:
+- **fBodyGyroJerkMag.mean**:
   - Shows the grouped average of the mean of the frequency-domain magnitude of jerk of body gyro.
 
-- **fBodyBodyGyroJerkMag.std**:
+- **fBodyGyroJerkMag.std**:
   - Shows the grouped average of the standard deviation of the frequency-domain magnitude of jerk of body gyro.
