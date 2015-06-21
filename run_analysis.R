@@ -74,14 +74,16 @@ activities <- rbind(y_train_data, y_test_data)
 #########################################################################################
 
 num_to_label_activity <- function(n){as.character(activitylabel[n,2])}
-merged_data$activities <- num_to_label_activity(activities$V1)
+merged_data$activity <- num_to_label_activity(activities$V1)
 
 #########################################################################################
 ## STEP 4: Appropriately labels the data set with descriptive variable names.          ##
 ## Selects appropriate feature names and assigns them to names(merged_data)            ##
+## Variable names are made syntactical by replacing '-' with '.' and removing '()'     ##
 #########################################################################################
 
-names(merged_data) <- c(as.character(features[[2]][acceptedvars]), "subject", "activities")
+names(merged_data) <- c(as.character(features[[2]][acceptedvars]), "subject", "activity")
+names(merged_data) <- gsub("\\(\\)", "", gsub("-", ".", names(merged_data)))
 
 library(dplyr)
 
@@ -93,5 +95,7 @@ library(dplyr)
 ## grouped by activity and subject                                                     ##
 #########################################################################################
 
-grouped_data <- group_by(merged_data, activities, subject)
+grouped_data <- group_by(merged_data, activity, subject)
 final_data <- summarise_each(grouped_data, funs(mean))
+
+View(final_data)
