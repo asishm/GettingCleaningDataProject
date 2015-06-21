@@ -10,7 +10,7 @@ One of the most exciting areas in all of data science right now is wearable comp
 
 ## Important information for running the script
 
-- Requires the dplyr library/package
+- **Requires** the **dplyr** library/package
 - Please note that the script can take 20 seconds to execute
 - The script produces the wide-form of tidy data
 
@@ -27,8 +27,8 @@ One of the most exciting areas in all of data science right now is wearable comp
 
 - **Second step** involved extracting only the measurements on the mean and standard deviation. Reading the README available in the *UCI HAR Dataset* folder, only those measurements that have **mean()** or **std()** represent measurements on the mean and standard deviation. They were selected using `grepl` on the `features` data set. The features that had **angle()** were not considered when filtering because they are not an actual measurement, but rather, are calculated angles between the relevant vectors. The merged dataset was filtered by these columns.
 
-- **Third step** asks to use descriptive activity names in the dataset. A *function* was created that converted the integer labels 1-6 to the corresponding activity name derived from the `activity_labels` dataset. This function was then applied to the merged data set of `ytest` and `ytrain` to have descriptive names. This merged dataset was finally added to the original dataset with the variable name `activities`.
+- **Third step** asks to use descriptive activity names in the dataset. A *function* was created that converted the integer labels 1-6 to the corresponding activity name derived from the `activity_labels` dataset. This function was then applied to the merged data set of `ytest` and `ytrain` to have descriptive names. This merged dataset was finally added to the original dataset with the variable name `activity`.
 
-- **Fourth step** requires using appropriate variable names for the variables in the dataset. The filtered columns that were selected in step 2 was assigned to the names of the dataset by assigning to `names(merged_data)`. The conversion to `as.character` was necessitated because the original labels were factors.
+- **Fourth step** requires using appropriate variable names for the variables in the dataset. The filtered columns that were selected in step 2 was assigned to the names of the dataset by assigning to `names(merged_data)`. The conversion to `as.character` was necessitated because the original labels were factors. Further the feature names were appropriately cleaned using `gsub` by replacing **-** with **.** and removing **()** to make it syntactical.
 
 - **Fifth and final step** entailed creating a new dataset of the means of the filtered variables grouped by the subject and activity. This was done by using the `dplyr` package and the functions `group_by` and `summarise_each`.
